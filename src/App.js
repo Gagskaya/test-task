@@ -34,7 +34,10 @@ const sortBy = (items, sortValue, orderValue) => {
       return items;
   }
 }
-
+const filterBy = (items, filterValue) => items.filter(item => item.name.toLowerCase().indexOf(filterValue.toLowerCase()) >= 0);
+const searchBy = (items, sortValue, filterValue, orderValue) => {
+  return sortBy(filterBy(items, filterValue), sortValue, orderValue)
+}
 const App = (props) => {
   const { items, setData, sortData, orderData, filterData, filterValue } = props;
   const [active, setACtive] = useState(true);
@@ -57,7 +60,7 @@ const App = (props) => {
         </div>
         <input value={filterValue} onChange={e => filterData(e.target.value)} type="text" className="app__search-input" placeholder="Введите запрос" />
         {
-          items && items.map(item => <View  {...item} key={item.id} active={active} translate={translate} />)
+          items && items.map(item => <View  {...item} key={item.id} active={active} translate={translate}/>)
         }
         <button className="tranlate-btn" onClick={() => setTranslate(!translate)}>{translate ? 'RU' : 'EN'}</button>
       </div>
@@ -66,7 +69,7 @@ const App = (props) => {
 }
 
 const mapStateToProps = ({ data, sort, order, filter }) => ({
-  items: data.items && sortBy(data.items, sort.sortValue, order.orderValue),
+  items: data.items && searchBy(data.items, sort.sortValue, filter.filterValue, order.orderValue),
   filterValue: filter.filterValue
 });
 export default connect(mapStateToProps, { setData, sortData, orderData, filterData })(App);

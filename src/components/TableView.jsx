@@ -6,7 +6,10 @@ import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import Icon from '@material-ui/core/Icon';
 import Table from '@material-ui/core/Table';
-export const TableView = ({ name, age, phone, classes, translate }) => {
+import classNames from 'classnames'
+import { useState } from 'react';
+export const TableView = ({ name, age, phone, classes, translate, favourite, setFavourite, id }) => {
+    const [activeItem,setActiveItem] = useState(false);
     return (
         <TableContainer component={Paper}>
             <Table className={classes.table} size="small" aria-label="simple table">
@@ -17,7 +20,7 @@ export const TableView = ({ name, age, phone, classes, translate }) => {
                         </TableCell>
                         <TableCell>{age} {translate ? 'лет' : 'years old'}</TableCell>
                         <TableCell align="right">{phone}</TableCell>
-                        <TableCell align="right"><Icon className="star-icon">star</Icon></TableCell>
+                        <TableCell align="right"><Icon onClick={() => setActiveItem(!activeItem)} className={classNames('star-icon', activeItem ? 'active' : '')}>star</Icon></TableCell>
                     </TableRow>
                 </TableBody>
             </Table>

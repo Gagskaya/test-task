@@ -24,12 +24,12 @@ const useStyles = makeStyles({
   }
 });
 
-export const View = ({ id, name, phrase, phone, age, video, active ,translate}) => {
+export const View = ({ id, name, phrase, phone, age, video, active, translate, favourite, setFavourite }) => {
   const classes = useStyles();
   return (
     <React.Fragment>
-      {!active && <Preview name={name} phrase={phrase} phone={phone} age={age} classes={classes} translate={translate}/>}
-      {active && <TableView name={name} phrase={phrase} phone={phone} age={age} classes={classes}  translate={translate}/>}
+      {!active && <Preview name={name} phrase={phrase} phone={phone} age={age} classes={classes} translate={translate} />}
+      {active && <TableView name={name} phrase={phrase} phone={phone} age={age} classes={classes} setFavourite={setFavourite} favourite={favourite} translate={translate} id={id} />}
     </React.Fragment>
   );
 }
