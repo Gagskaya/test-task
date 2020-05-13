@@ -1,26 +1,43 @@
 .app {
     display: flex;
+    flex-wrap: wrap;
+    .tab {
+        border: 1px solid black;
+        cursor: pointer;
+        width: 100%;
+        padding: 5px 0;
+        &:hover {
+            background: #ccc;
+        }  
+        &.active {
+            background: #ccc;
+        }
+   }
     &__sort {
         width: 100%;
+        flex-basis: 60%;
        &-tabs {
            max-width: 300px;
            display: flex;
            justify-content: space-between;
            text-align: center;
-           cursor: pointer;
            margin-bottom: 10px;
-           span {
-               border: 1px solid black;
-               width: 100%;
-               padding: 5px 0;
-               &:hover {
-                   background: #ccc;
-               }
-          }
+          
        }
     }
     &__view {
         width: 100%;
         max-width: 150px;
+        flex-basis: 40%;
+        &-tabs {
+            display: flex;
+        }
+        &-tab {
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
     }
 }
