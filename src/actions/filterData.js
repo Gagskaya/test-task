@@ -1,4 +1,4 @@
-export const filterData = value => ({
+export const filterData = filterValue => ({
     type : 'FILTER_DATA',
-    payload : value
+    payload : filterValue
 })

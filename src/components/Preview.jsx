@@ -11,7 +11,7 @@ export const Preview = ({ name, age, phone, phrase, classes ,translate}) => {
                     {name}
                 </Typography>
                 <Typography>
-                    {age} {translate ? 'Лет' : 'Years old'}
+                    {age} {translate ? 'лет' : 'Years old'}
         </Typography>
                 <Typography className={classes.phone} color="textSecondary">
                     {phone}

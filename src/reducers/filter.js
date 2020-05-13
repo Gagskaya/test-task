@@ -1,13 +1,13 @@
 const initialState = {
-    orderValue: 'increase'
+    filterValue: ''
 }
 
-export const order = (state = initialState, action) => {
+export const filter = (state = initialState, action) => {
     switch (action.type) {
-        case "ORDER_DATA":
+        case "FILTER_DATA":
             return {
                 ...state,
-                orderValue: action.payload
+                filterValue: action.payload
             }
         default:
             return state;

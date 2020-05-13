@@ -1,4 +1,4 @@
-export const sortData = sortName => ({
+export const sortData = sortValue => ({
     type : 'SORT_DATA',
-    payload : sortName
+    payload : sortValue
 })

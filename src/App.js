@@ -9,36 +9,36 @@ import './App.scss';
 import { setData } from './actions/setData';
 import { sortData } from './actions/sortData';
 import { orderData } from './actions/orderData';
+import { filterData } from './actions/filterData';
 import { View } from './components/View';
 import { Sort } from './components/Sort'
 
 
 
-const sortBy = (items, sortName, orderName) => {
-  switch (orderName) {
+const sortBy = (items, sortValue, orderValue) => {
+  switch (orderValue) {
     case 'increase':
-      return orderBy(items, sortName, 'asc');
+      return orderBy(items, sortValue, 'asc');
     case "decrease":
-      return orderBy(items, sortName, 'desc');
+      return orderBy(items, sortValue, 'desc');
     default: break;
   }
-  switch (sortName) {
+  switch (sortValue) {
     case 'id':
-      return orderBy(items, sortName, 'asc');
+      return orderBy(items, sortValue, 'asc');
     case 'name':
-      return orderBy(items, sortName, 'asc');
+      return orderBy(items, sortValue, 'asc');
     case 'age':
-      return orderBy(items, sortName, 'asc');
+      return orderBy(items, sortValue, 'asc');
     default:
       return items;
   }
 }
 
 const App = (props) => {
-  const { items, setData, sortData, orderData } = props;
+  const { items, setData, sortData, orderData, filterData, filterValue } = props;
   const [active, setACtive] = useState(true);
   const [translate, setTranslate] = useState(true);
-  const [inputValue, setInputValue] = useState('');
   useEffect(() => {
     axios.get('/data.json').then(({ data }) => {
       setData(data);
@@ -55,9 +55,9 @@ const App = (props) => {
             <span className={classNames('app__view-tab', 'tab', !active ? 'active' : '')} onClick={() => setACtive(false)}>{translate ? 'Превью' : 'Preview'}</span>
           </div>
         </div>
-        <input value={inputValue} onChange={e => setInputValue(e.target.value)} type="text" className="app__search-input" placeholder="Введите запрос" />
+        <input value={filterValue} onChange={e => filterData(e.target.value)} type="text" className="app__search-input" placeholder="Введите запрос" />
         {
-          items && items.map(item => <View  {...item} key={item.id} active={active} translate={translate}/>)
+          items && items.map(item => <View  {...item} key={item.id} active={active} translate={translate} />)
         }
         <button className="tranlate-btn" onClick={() => setTranslate(!translate)}>{translate ? 'RU' : 'EN'}</button>
       </div>
@@ -65,7 +65,8 @@ const App = (props) => {
   );
 }
 
-const mapStateToProps = ({ data, sort, order }) => ({
-  items: data.items && sortBy(data.items, sort.sortName, order.orderName)
+const mapStateToProps = ({ data, sort, order, filter }) => ({
+  items: data.items && sortBy(data.items, sort.sortValue, order.orderValue),
+  filterValue: filter.filterValue
 });
-export default connect(mapStateToProps, { setData, sortData, orderData })(App);
+export default connect(mapStateToProps, { setData, sortData, orderData, filterData })(App);

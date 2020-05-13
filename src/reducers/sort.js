@@ -1,5 +1,5 @@
 const initialState = {
-    sortName: 'id'
+    sortValue: 'id'
 }
 
 export const sort = (state = initialState, action) => {
@@ -7,7 +7,7 @@ export const sort = (state = initialState, action) => {
         case "SORT_DATA":
             return {
                 ...state,
-                sortName: action.payload
+                sortValue: action.payload
             }
         default:
             return state;

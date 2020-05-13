@@ -15,7 +15,7 @@ export const TableView = ({ name, age, phone, classes, translate }) => {
                         <TableCell component="th" scope="row" className={classes.th}>
                             {name}
                         </TableCell>
-                        <TableCell>{age} {translate ? 'Лет' : 'Years old'}</TableCell>
+                        <TableCell>{age} {translate ? 'лет' : 'years old'}</TableCell>
                         <TableCell align="right">{phone}</TableCell>
                         <TableCell align="right"><Icon className="star-icon">star</Icon></TableCell>
                     </TableRow>

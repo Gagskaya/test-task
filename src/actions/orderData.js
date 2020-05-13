@@ -1,4 +1,4 @@
-export const orderData = orderName => ({
+export const orderData = orderValue => ({
     type : 'ORDER_DATA',
-    payload : orderName
+    payload : orderValue
 })
