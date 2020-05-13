@@ -1,6 +1,19 @@
 .app {
     display: flex;
     flex-wrap: wrap;
+    position: relative;
+    .tranlate-btn{
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
+    &__search {
+        &-input {
+            padding: 5px;
+            position: absolute;
+            right: 35px;
+        }
+    }
     .tab {
         border: 1px solid black;
         cursor: pointer;
@@ -13,7 +26,9 @@
             background: #ccc;
         }
    }
+   
     &__sort {
+        margin-top: 20px;
         width: 100%;
         flex-basis: 60%;
        &-tabs {
@@ -26,6 +41,7 @@
        }
     }
     &__view {
+        margin-top: 20px;
         width: 100%;
         max-width: 150px;
         flex-basis: 40%;
@@ -38,6 +54,16 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            &.active {
+                background: #ccc;
+            }
+        }
+    }
+    .star-icon {
+        cursor: pointer;
+        color: #ccc;
+        &:hover {
+            color: #000;
         }
     }
 }
