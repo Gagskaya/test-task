@@ -11,7 +11,7 @@ import { useState } from 'react';
 export const TableView = ({ name, age, phone, classes, translate}) => {
     const [activeItem,setActiveItem] = useState(false);
     return (
-        <TableContainer component={Paper}>
+        <TableContainer component={Paper} className="animate__animated animate__bounceInUp">
             <Table className={classes.table} size="small" aria-label="simple table">
                 <TableBody>
                     <TableRow>

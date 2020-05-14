@@ -10,6 +10,7 @@ export const Sort = ({ sortData, orderData, translate }) => {
   const sortItems = (name) => {
     setActiveSort(name);
     sortData(name);
+    // history.push('/table/name')
   }
   const orderItems = name => {
     setActiveOrder(name);

@@ -52,7 +52,7 @@ const App = (props) => {
   let pathname = history.location.pathname;
   const onClick = (bool, value) => {
     setACtive(bool);
-    history.push(value)
+    history.push(value);
   }
   return (
     <Container maxWidth="sm">

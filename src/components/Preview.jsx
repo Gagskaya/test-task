@@ -6,10 +6,11 @@ import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import shoe from '../assets/videos/shoe.mp4'
-import boy from '../assets/videos/boy.mp4'
+import boy from '../assets/videos/boy.mp4';
+import classNames from 'classnames'
 export const Preview = ({ name, age, phone, phrase, classes, translate, video }) => {
     return (
-        <Card className={classes.root}>
+        <Card className={classNames(classes.root, 'animate__animated animate__bounceInUp')}>
             {!video ? <CardContent>
                 <Typography color="textSecondary" gutterBottom>
                     {name}
