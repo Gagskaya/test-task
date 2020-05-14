@@ -8,7 +8,7 @@ import Icon from '@material-ui/core/Icon';
 import Table from '@material-ui/core/Table';
 import classNames from 'classnames'
 import { useState } from 'react';
-export const TableView = ({ name, age, phone, classes, translate, favourite, setFavourite, id }) => {
+export const TableView = ({ name, age, phone, classes, translate}) => {
     const [activeItem,setActiveItem] = useState(false);
     return (
         <TableContainer component={Paper}>
