@@ -16,7 +16,7 @@ export const Preview = ({ name, age, phone, phrase, classes, translate, video })
                     {name}
                 </Typography>
                 <Typography>
-                    {age} {translate ? 'лет' : 'Years old'}
+                    {age} {translate ? 'лет' : 'years old'}
                 </Typography>
                 <Typography className={classes.phone} color="textSecondary">
                     {phone}
@@ -26,14 +26,14 @@ export const Preview = ({ name, age, phone, phrase, classes, translate, video })
                 </Typography>
                 <Typography variant="body2" component="p">
                 </Typography>
-            </CardContent> : <Video  className="video-player" loop muted
+            </CardContent> : <Video className="video-player" loop muted autoPlay
                 controls={['PlayPause', 'Seek', 'Time', 'Volume', 'Fullscreen']}
                 poster="Your poster here"
                 onCanPlayThrough={() => {
                     // Do stuff
                 }}>
                     <source src={video === 'boy' ? boy : shoe} type="video/mp4" />
-                    <track label="English" kind="subtitles" srcLang="en"  default />
+                    <track label="English" kind="subtitles" srcLang="en" default />
                 </Video>}
         </Card>
     )

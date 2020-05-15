@@ -1,16 +1,12 @@
 import React, { useState } from 'react'
 import classNames from 'classnames'
-import { useHistory } from 'react-router-dom';
 
 export const Sort = ({ sortData, orderData, translate }) => {
-  let history = useHistory();
-  let pathname = history.location.pathname;
   const [activeSort, setActiveSort] = useState('id');
   const [activeOrder, setActiveOrder] = useState('increase');
   const sortItems = (name) => {
     setActiveSort(name);
     sortData(name);
-    // history.push('/table/name')
   }
   const orderItems = name => {
     setActiveOrder(name);

@@ -1,5 +1,5 @@
 const initialState = {
-    orderValue: 'increase'
+    orderValue: 'decrease'
 }
 
 export const order = (state = initialState, action) => {

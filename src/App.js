@@ -3,7 +3,6 @@ import axios from 'axios';
 import { connect } from 'react-redux';
 import Container from '@material-ui/core/Container';
 import orderBy from 'lodash/orderBy'
-import classNames from 'classnames'
 
 import './App.scss';
 import { setData } from './actions/setData';
@@ -12,7 +11,7 @@ import { orderData } from './actions/orderData';
 import { filterData } from './actions/filterData';
 import { View } from './components/View';
 import { Sort } from './components/Sort'
-import { useHistory } from 'react-router-dom';
+import { Content } from './components/Content';
 
 
 
@@ -41,34 +40,26 @@ const searchBy = (items, sortValue, filterValue, orderValue) => {
 }
 const App = (props) => {
   const { items, setData, sortData, orderData, filterData, filterValue } = props;
-  const [active, setACtive] = useState(null);
   const [translate, setTranslate] = useState(true);
   useEffect(() => {
     axios.get('/data.json').then(({ data }) => {
       setData(data);
     })
   }, [setData]);
-  let history = useHistory();
-  let pathname = history.location.pathname;
-  const onClick = (bool, value) => {
-    setACtive(bool);
-    history.push(value);
-  }
+
   return (
     <Container maxWidth="sm">
       <div className="app">
-        <Sort sortData={sortData} orderData={orderData} translate={translate} />
-        <div className="app__view">
-          <h4>{translate ? 'Вид' : 'View'}</h4>
-          <div className="app__view-tabs">
-            <span className={classNames('app__view-tab', 'tab', pathname === '/table' && 'active')} onClick={() => onClick(true, 'table')} >{translate ? 'Таблица' : 'Table'}</span>
-            <span className={classNames('app__view-tab', 'tab', pathname === '/preview' && 'active')} onClick={() => onClick(false, 'preview')}>{translate ? 'Превью' : 'Preview'}</span>
-          </div>
+        <div className="app-tabs-wrap">
+          <Sort sortData={sortData} orderData={orderData} translate={translate} />
+          <View translate={translate} />
+        </div>
+        <div className="app-content-wrap">
+          {
+            items && items.map(item => <Content  {...item} key={item.id} translate={translate} />)
+          }
         </div>
         <input value={filterValue} onChange={e => filterData(e.target.value)} type="text" className="app__search-input" placeholder="Введите запрос" />
-        {
-          items && items.map(item => <View  {...item} key={item.id} active={active} translate={translate} />)
-        }
         <button className="tranlate-btn" onClick={() => setTranslate(!translate)}>{translate ? 'RU' : 'EN'}</button>
       </div>
     </Container>

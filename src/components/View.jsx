@@ -1,37 +1,27 @@
-import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import React, { useState } from 'react';
 
-import { Preview } from './Preview';
-import { TableView } from './TableView';
-import { Route } from 'react-router-dom';
-const useStyles = makeStyles({
-  root: {
-    minWidth: 275,
-    maxWidth: '50%',
-    marginTop: '15px',
-    minHeight: '190px',
-    boxShadow: '1px 1px 10px 1px rgba(0,0,0.2)'
-  },
-  title: {
-    fontSize: 14,
-  },
-  phone: {
-    marginBottom: 12,
-  },
-  th: {
-    minWidth: '150px'
-  },
-  table: {
-    marginTop: '10px'
+import { useHistory } from 'react-router-dom';
+import classNames from 'classnames'
+
+
+
+
+export const View = ({ translate }) => {
+  const [active, setACtive] = useState(null);
+  let history = useHistory();
+  let pathname = history.location.pathname;
+  const onClick = (bool, value) => {
+    setACtive(bool);
+    history.push(value);
   }
-});
 
-export const View = ({ id, name, phrase, phone, age, video, active, translate, favourite, setFavourite }) => {
-  const classes = useStyles();
   return (
-    <React.Fragment>
-      <Route  exact path='/table'>{<TableView name={name} phrase={phrase} phone={phone} age={age} classes={classes} setFavourite={setFavourite} favourite={favourite} translate={translate} id={id} />}</Route>
-      <Route exact path="/preview">{ <Preview name={name} phrase={phrase} phone={phone} age={age} classes={classes} translate={translate} video={video} />}</Route>
-    </React.Fragment>
+    <div className="app__view">
+      <h4>{translate ? 'Вид' : 'View'}</h4>
+      <div className="app__view-tabs">
+        <span className={classNames('app__view-tab', 'tab', pathname === '/table' && 'active')} onClick={() => onClick(!active, 'table')} >{translate ? 'Таблица' : 'Table'}</span>
+        <span className={classNames('app__view-tab', 'tab', pathname === '/preview' && 'active')} onClick={() => onClick(!active, 'preview')}>{translate ? 'Превью' : 'Preview'}</span>
+      </div>
+    </div>
   );
 }

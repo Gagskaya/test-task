@@ -1,5 +1,5 @@
 const initialState = {
-    sortValue: 'id'
+    sortValue: ''
 }
 
 export const sort = (state = initialState, action) => {
