@@ -12,10 +12,10 @@ export const TableView = ({ name, age, phone, classes, translate}) => {
     const [activeItem,setActiveItem] = useState(false);
     return (
         <TableContainer component={Paper} className="animate__animated animate__bounceInUp">
-            <Table className={classes.table} size="small" aria-label="simple table">
+            <Table className={classes.table} size="small" aria-label="simple table responsive table">
                 <TableBody>
                     <TableRow>
-                        <TableCell component="th" scope="row" className={classes.th}>
+                        <TableCell  scope="row" className={classes.th}>
                             {name}
                         </TableCell>
                         <TableCell>{age} {translate ? 'лет' : 'years old'}</TableCell>
@@ -23,6 +23,7 @@ export const TableView = ({ name, age, phone, classes, translate}) => {
                         <TableCell align="right"><Icon onClick={() => setActiveItem(!activeItem)} className={classNames('star-icon', activeItem ? 'active' : '')}>star</Icon></TableCell>
                     </TableRow>
                 </TableBody>
+                
             </Table>
         </TableContainer>
     )

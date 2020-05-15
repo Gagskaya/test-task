@@ -26,7 +26,7 @@ export const Preview = ({ name, age, phone, phrase, classes, translate, video })
                 </Typography>
                 <Typography variant="body2" component="p">
                 </Typography>
-            </CardContent> : <Video className="video-player" loop muted autoPlay
+            </CardContent> : <Video className="video-player" loop muted 
                 controls={['PlayPause', 'Seek', 'Time', 'Volume', 'Fullscreen']}
                 poster="Your poster here"
                 onCanPlayThrough={() => {

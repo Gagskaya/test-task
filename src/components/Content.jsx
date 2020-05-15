@@ -12,7 +12,8 @@ const useStyles = makeStyles({
       marginTop: '15px',
       height: '190px',
       boxShadow: '1px 1px 10px 1px rgba(0,0,0.2)',
-      display : 'inline-block'
+      display : 'inline-block',
+      
     },
     title: {
       fontSize: 14,
